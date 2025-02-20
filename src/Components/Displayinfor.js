@@ -9,7 +9,9 @@ class Displayinfor extends React.Component {
       check: !this.state.check,
     });
   };
-
+  handleDelete = (item) => {
+    this.props.DeleteUser(item);
+  };
   render() {
     let { listUsers } = this.props;
     console.log(listUsers);
@@ -30,6 +32,10 @@ class Displayinfor extends React.Component {
                     className={+item.age > 18 ? "green" : "red"}
                   >
                     tôi tên là {item.name} , tôi nam nay {item.age}
+                    <br />
+                    <button onClick={() => this.handleDelete(item)}>
+                      Delete
+                    </button>
                     <hr />
                   </div>
                 </>

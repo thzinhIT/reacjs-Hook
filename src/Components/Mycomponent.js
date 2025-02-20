@@ -1,5 +1,5 @@
 import React from "react";
-import Userinfor from "./Userinfor";
+import AddUserinfor from "./AddUserinfor";
 import Displayinfor from "./Displayinfor";
 class MyComponent extends React.Component {
   state = {
@@ -9,11 +9,26 @@ class MyComponent extends React.Component {
       { id: 3, name: "thành vinh", age: 20 },
     ],
   };
+  AddUser = (user) => {
+    this.setState({
+      listUsers: [...this.state.listUsers, user],
+    });
+  };
+  DeleteUser = (user) => {
+    let current = this.state.listUsers;
+    current = current.filter((item) => item.id !== user.id);
+    this.setState({
+      listUsers: current,
+    });
+  };
   render() {
     return (
       <>
-        <Userinfor />
-        <Displayinfor listUsers={this.state.listUsers} />
+        <AddUserinfor AddUser={this.AddUser} />
+        <Displayinfor
+          listUsers={this.state.listUsers}
+          DeleteUser={this.DeleteUser}
+        />
       </>
     );
   }
