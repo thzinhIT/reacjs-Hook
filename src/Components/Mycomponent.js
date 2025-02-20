@@ -1,9 +1,14 @@
 import React from "react";
 class MyComponent extends React.Component {
+  state = {
+    name: " thành vinh",
+    adress: "741hv",
+    age: 20,
+  };
   render() {
     return (
       <>
-        <div> học lại class component</div>
+        <div> tôi tên là {this.state.name}</div>
       </>
     );
   }
