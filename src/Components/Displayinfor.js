@@ -1,51 +1,63 @@
 import React from "react";
-class Displayinfor extends React.Component {
-  state = {
-    check: false,
-  };
+// class Displayinfor extends React.Component {
+//   render() {
+//     let { listUsers } = this.props;
+//     console.log(listUsers);
 
-  handleShowHide = () => {
-    this.setState({
-      check: !this.state.check,
-    });
-  };
-  handleDelete = (item) => {
-    this.props.DeleteUser(item);
-  };
-  render() {
-    let { listUsers } = this.props;
-    console.log(listUsers);
-    let { check } = this.state;
+//     console.log(">>>> render");
 
-    return (
-      <>
-        {!check && <button onClick={() => this.handleShowHide()}>show</button>}
+//     return (
+//       <>
+//         {true && (
+//           <>
+//             <div>list user:</div>
+//             {listUsers.map((item, index) => {
+//               return (
+//                 <>
+//                   <div
+//                     key={item.id}
+//                     className={+item.age > 18 ? "green" : "red"}
+//                   >
+//                     tôi tên là {item.name} , tôi nam nay {item.age}
+//                     <br />
+//                     <button onClick={() => this.props.DeleteUser(item)}>
+//                       Delete
+//                     </button>
+//                     <hr />
+//                   </div>
+//                 </>
+//               );
+//             })}
+//           </>
+//         )}
+//       </>
+//     );
+//   }
+// }
 
-        {check && (
-          <>
-            <div>list user:</div>
-            {listUsers.map((item, index) => {
-              return (
-                <>
-                  <div
-                    key={item.id}
-                    className={+item.age > 18 ? "green" : "red"}
-                  >
-                    tôi tên là {item.name} , tôi nam nay {item.age}
-                    <br />
-                    <button onClick={() => this.handleDelete(item)}>
-                      Delete
-                    </button>
-                    <hr />
-                  </div>
-                </>
-              );
-            })}
-            <button onClick={() => this.handleShowHide()}>hide</button>
-          </>
-        )}
-      </>
-    );
-  }
-}
+const Displayinfor = (props) => {
+  let { listUsers } = props;
+
+  return (
+    <>
+      {true && (
+        <>
+          <div>list user:</div>
+          {listUsers.map((item, index) => {
+            return (
+              <>
+                <div key={item.id} className={+item.age > 18 ? "green" : "red"}>
+                  tôi tên là {item.name} , tôi nam nay {item.age}
+                  <br />
+                  <button onClick={() => props.DeleteUser(item)}>Delete</button>
+                  <hr />
+                </div>
+              </>
+            );
+          })}
+        </>
+      )}
+    </>
+  );
+};
 export default Displayinfor;

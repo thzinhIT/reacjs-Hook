@@ -21,7 +21,6 @@ class AddUserinfor extends React.Component {
   };
   handleOnSubmit = (e) => {
     e.preventDefault();
-    alert("chặn rồi");
 
     this.props.AddUser({
       id: Math.random() * 1000001 + "vinh",
