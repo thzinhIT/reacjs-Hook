@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 // class Displayinfor extends React.Component {
 //   render() {
 //     let { listUsers } = this.props;
@@ -37,10 +37,14 @@ import React from "react";
 
 const Displayinfor = (props) => {
   let { listUsers } = props;
-
+  const [ShowHide, setShowHide] = useState(true);
+  const handleShowHide = () => {
+    setShowHide(!ShowHide);
+  };
   return (
     <>
-      {true && (
+      <button onClick={() => handleShowHide()}>show</button>
+      {ShowHide && (
         <>
           <div>list user:</div>
           {listUsers.map((item, index) => {
