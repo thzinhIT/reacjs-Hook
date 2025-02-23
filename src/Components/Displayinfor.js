@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // class Displayinfor extends React.Component {
 //   render() {
 //     let { listUsers } = this.props;
@@ -41,6 +41,14 @@ const Displayinfor = (props) => {
   const handleShowHide = () => {
     setShowHide(!ShowHide);
   };
+  // giá trị [listUsers] là dùng để kiểm tra thay đổi của listuser. nếu như để [] thì hàm useeffrct chạy có 1 lần ko chạy nx .
+  useEffect(() => {
+    if (listUsers.length === 0) alert("bạn đã xóa hết rồi");
+    setTimeout(() => {
+      document.title = "thành vinh app";
+    }, 3000);
+    console.log("<<< call me useeffect");
+  }, [listUsers]);
   return (
     <>
       <button onClick={() => handleShowHide()}>show</button>
