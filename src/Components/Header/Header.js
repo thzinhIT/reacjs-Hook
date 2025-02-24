@@ -6,7 +6,11 @@ import { NavLink } from "react-router-dom";
 
 const Header = () => {
   return (
-    <Navbar expand="lg" className="bg-body-tertiary">
+    <Navbar
+      expand="lg"
+      className="bg-body-tertiary"
+      style={{ position: "relative", zIndex: 10 }}
+    >
       <Container>
         {/* <Navbar.Brand href="#home">Web Thành Vinh</Navbar.Brand> */}
         <NavLink className="navbar-brand" to="/">
@@ -33,8 +37,8 @@ const Header = () => {
             {" "}
             <NavDropdown title="Setting" id="basic-nav-dropdown">
               <NavDropdown.Item>Log in</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Log out</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Profile</NavDropdown.Item>
+              <NavDropdown.Item>Log out</NavDropdown.Item>
+              <NavDropdown.Item>Profile</NavDropdown.Item>
               <NavDropdown.Divider />
             </NavDropdown>
           </Nav>
