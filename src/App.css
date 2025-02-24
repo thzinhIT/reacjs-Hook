@@ -15,5 +15,5 @@ body {
 }
 
 .app-container .header-container .nav-link.active {
-  color: red;
+  color: rgb(42, 194, 205);
 }
