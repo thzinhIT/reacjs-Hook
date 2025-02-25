@@ -13,7 +13,47 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+@media (min-width: 1460px) {
+  .container,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container-xl,
+  .container-xxl {
+    max-width: 1452px !important;
+  }
+}
 .app-container .header-container .nav-link.active {
   color: rgb(42, 194, 205);
+}
+
+.app-container .header-container .navbar {
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0) !important;
+  padding-top: 20px;
+}
+
+.app-container .header-container .btn-login {
+  border-radius: 5px;
+  margin-right: 15px;
+  padding: 0 10px;
+  border: 1px solid #535353;
+  height: 37px;
+}
+
+.app-container .header-container button.btn-signip {
+  border-radius: 5px;
+  background: rgb(41, 40, 40);
+  color: #fff;
+  padding: 0 15px;
+  height: 37px;
+}
+.app-container .header-container button.btn-signip:hover {
+  background-color: black;
+}
+
+.app-container .app-content .home-container .homepage-content {
+  padding: 100px;
+  position: relative;
+  z-index: 100;
 }
