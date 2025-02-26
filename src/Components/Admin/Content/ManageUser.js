@@ -3,6 +3,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ModalCreateUser from "./ModalCreateUser";
 import { FcPlus } from "react-icons/fc";
+import TableUser from "./TableUser";
 
 import "./ManageUser.scss";
 const ManageUser = (props) => {
@@ -21,7 +22,9 @@ const ManageUser = (props) => {
             <FcPlus />
             Add new user
           </button>
-          <div className="table-user-container">table user</div>
+          <div className="table-user-container">
+            <TableUser />
+          </div>
           <ModalCreateUser show={showModal} setShow={SetShowModal} />
         </div>
       </div>
