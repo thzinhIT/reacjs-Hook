@@ -3,16 +3,27 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import bg2 from "../../../assets/bg2.jpg";
 import { FcPlus } from "react-icons/fc";
+import axios from "axios";
+const ModalCreateUser = (props) => {
+  const { show, setShow } = props;
+  console.log(props);
+  // const [show, setShow] = useState(false);
+  // console.log(show);
+  const handleClose = () => {
+    setShow(false);
 
-const ModalCreateUser = () => {
-  const [show, setShow] = useState(false);
+    SetEmail("");
+    SetPassWord("");
+    SetUerName("");
+    SetRole("");
+    SetImg("");
+    SetPreview("");
+  };
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
   const [email, SetEmail] = useState("");
   const [password, SetPassWord] = useState("");
   const [username, SetUerName] = useState("");
-  const [role, SetRole] = useState("");
+  const [role, SetRole] = useState("User");
   const [img, SetImg] = useState("");
   const [preview, SetPreview] = useState("");
   const handleUpdateImg = (e) => {
@@ -22,11 +33,39 @@ const ModalCreateUser = () => {
       SetImg(URL.createObjectURL(e.target.files[0]));
     }
   };
+
+  const handleSubmitCreateUser = async () => {
+    // validate
+
+    // call api
+    // let datas = {
+    //   email: email,
+    //   password: password,
+    //   username: username,
+    //   role: role,
+    //   userImage: img,
+    // };
+
+    // console.log(datas);
+    const data = new FormData();
+    data.append("email", email);
+    data.append("password", password);
+    data.append("username", username);
+    data.append("role", role);
+    data.append("userImage", img);
+
+    let res = await axios.post(
+      "http://localhost:8081/api/v1/participant",
+      data
+    );
+    console.log("<<<<< res data", res);
+  };
+
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+      {/* <Button variant="primary" onClick={handleShow}>
         Launch demo modal
-      </Button>
+      </Button> */}
 
       <Modal
         show={show}
@@ -41,40 +80,37 @@ const ModalCreateUser = () => {
         <Modal.Body>
           <form className="row g-3">
             <div className="col-md-6">
-              <label
-                for="inputEmail4"
-                className="form-label"
-                value={email}
-                onChange={(e) => SetEmail(e.target.value)}
-              >
+              <label for="inputEmail4" className="form-label" value={email}>
                 Email
               </label>
-              <input type="email" className="form-control" />
+              <input
+                type="email"
+                className="form-control"
+                onChange={(e) => SetEmail(e.target.value)}
+              />
             </div>
             <div className="col-md-6">
-              <label
-                className="form-label"
-                value={password}
-                onChange={(e) => SetPassWord(e.target.value)}
-              >
+              <label className="form-label" value={password}>
                 Password
               </label>
               <input
                 type="password"
                 className="form-control"
                 id="inputPassword4"
+                onChange={(e) => SetPassWord(e.target.value)}
               />
             </div>
 
             <div className="col-md-6">
-              <label
-                className="form-label"
-                value={username}
-                onChange={(e) => SetUerName(e.target.value)}
-              >
+              <label className="form-label" value={username}>
                 User Name
               </label>
-              <input type="text" className="form-control" id="inputCity" />
+              <input
+                type="text"
+                className="form-control"
+                id="inputCity"
+                onChange={(e) => SetUerName(e.target.value)}
+              />
             </div>
             <div className="col-md-4">
               <label className="form-label">Role</label>
@@ -114,7 +150,7 @@ const ModalCreateUser = () => {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={() => handleSubmitCreateUser()}>
             Save
           </Button>
         </Modal.Footer>
