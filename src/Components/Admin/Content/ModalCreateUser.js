@@ -4,6 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import bg2 from "../../../assets/bg2.jpg";
 import { FcPlus } from "react-icons/fc";
 
+import { getAllUser } from "../../../services//ApiService";
 import { ToastContainer, toast } from "react-toastify";
 import { postCreateNewUser } from "../../../services/ApiService";
 const ModalCreateUser = (props) => {
@@ -72,6 +73,7 @@ const ModalCreateUser = (props) => {
     if (data && data.EC === 0) {
       toast.success(data.EM);
       handleClose();
+      props.fectchListUser();
     }
     if (data && data.EC !== 0) {
       toast.error(data.EM);

@@ -1,26 +1,15 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
-import { getAllUser } from "../../../services//ApiService";
+
 // useEffect chạy sau khi return chạy
 //  có dấu [] là useffect chạy 1 lần thôi
-const TableUser = () => {
-  const [listUser, setListUser] = useState([]);
-  useEffect(() => {
-    fectchListUser();
-  }, []);
-  const fectchListUser = async () => {
-    let res = await getAllUser();
-
-    if (res.EC === 0) {
-      setListUser(res.DT);
-    }
-  };
+const TableUser = (props) => {
+  const { listUser } = props;
   return (
     <>
       <table className="table table-hover table-bordered">
         <thead>
           <tr>
-            <th scope="col">No</th>
+            <th scope="col">ID</th>
             <th scope="col">User Name</th>
             <th scope="col">Email</th>
             <th scope="col">Role</th>
@@ -33,7 +22,8 @@ const TableUser = () => {
               return (
                 <>
                   <tr key={`table -user -${index}`}>
-                    <th scope="row">{index + 1}</th>
+                    {/* <th scope="row">{index + 1}</th> */}
+                    <td>{item.id}</td>
                     <td>{item.username}</td>
                     <td>{item.email}</td>
                     <td>{item.role}</td>
