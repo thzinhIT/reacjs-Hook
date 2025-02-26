@@ -1,0 +1,46 @@
+.manage-user-container{
+    .user-content{
+        .img-preview{
+            border:1px solid red
+        }
+    }
+}
+
+.modal-add-user{
+    .img-preview{
+        border:1px dashed #ccc;
+        height: 150px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #ccc;
+        
+
+        img{
+            max-height: 100%;
+            max-width: 100%;
+        }
+    }
+    .lable-update{
+        display: flex;
+        align-items: center;
+        gap: 5px;
+       
+        width: fit-content;
+        border-radius:5px ;
+        padding: 4px 10px;
+        background-color: #eeeeee;
+        transition: 0.40s;
+        
+        cursor: pointer;
+
+        &:active{
+            transform: scale(0.9);
+        }
+        &:hover{
+            background-color: #bcbcbc;
+        }
+    }
+
+}
